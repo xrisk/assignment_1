@@ -49,7 +49,7 @@ void check_reverse(const int f1, const int f2) {
   off_t pos = 0;
 
   int flag = 1;
-  for (off_t idx = 0; idx < pos / 2; ++idx) {
+  for (off_t idx = 0; idx < fsize1 / 2; ++idx) {
     if (buf1[idx] != buf2[fsize2 - idx - 1]) {
       flag = 0;
       break;
