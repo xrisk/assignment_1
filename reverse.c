@@ -76,9 +76,28 @@ int create_destination(const char *fname) {
   return fd;
 }
 
+void write_integer(long long x) {
+  if (x == 0) {
+    write_message("0");
+    return;
+  }
+  char buffer[100];
+  char *ptr = buffer + 100;
+  int cnt = 0;
+  while (x) {
+    ptr--;
+    *ptr = '0' + (x % 10);
+    x /= 10;
+    cnt++;
+  }
+  if (write(STDOUT_FILENO, ptr, cnt) < 0)
+    handle_error("writing to stdout failed");
+}
+
 int main(int argc, char *argv[]) {
+
   if (argc != 2) {
-    write_message("usage: ./reverse source_file");
+    write_message("usage: ./reverse source_file\n");
     return EXIT_FAILURE;
   }
   char *source = argv[1];
@@ -135,12 +154,15 @@ int main(int argc, char *argv[]) {
 
     processed_size += actual_b;
 
-    printf("\rprogress: %lldM/%lldM bytes (%lld%%)",
-           processed_size / (1024 * 1024), total_size / (1024 * 1024),
-           (processed_size * 100) / total_size);
-    fflush(stdout);
+    write_message("\rprogress: ");
+    write_integer(processed_size / (1024 * 1024));
+    write_message("M/");
+    write_integer(total_size / (1024 * 1024));
+    write_message("M bytes (");
+    write_integer((processed_size * 100) / total_size);
+    write_message("%)");
   }
-  printf("\n");
+  write_message("\n");
 
   free(buffer);
 

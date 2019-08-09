@@ -56,9 +56,9 @@ void check_reverse(const int f1, const int f2) {
     }
   }
   if (flag)
-    write_message("Whether file contents are reversed in newfline: Yes\n");
+    write_message("Whether file contents are reversed in new file: Yes\n");
   else
-    write_message("Whether file contents are reversed in newline: No\n");
+    write_message("Whether file contents are reversed in new file: No\n");
 
   if (munmap(buf1, fsize1) < 0)
     handle_error("munmap");
