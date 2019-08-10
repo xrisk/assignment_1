@@ -1,10 +1,10 @@
-all: reverse verify
+all: Q1 Q2
 
-reverse: reverse.c
-	gcc -Ofast -m64 -march=native reverse.c -o reverse
+Q1: Q1.c
+	gcc -Ofast -m64 -march=native Q1.c -o Q1
 
-verify: verify.c
-	gcc -Ofast -m64 -march=native verify.c -o verify
+Q2: Q2.c
+	gcc -Ofast -m64 -march=native Q2.c -o Q2
 
 clean:
-	rm -rf verify reverse Assignment/
+	rm -rf Q1 Q2 Assignment/
