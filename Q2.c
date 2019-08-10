@@ -139,7 +139,7 @@ void check_perms(const int dir_fd, const int fd_1, const int fd_2) {
 
 int main(int argc, char *argv[]) {
   if (argc != 4) {
-    die("usage: ./check dir f1 f2\n");
+    die("usage: ./Q2 dir f1 f2\n");
   }
 
   int fd1, fd2, fd3;

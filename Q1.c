@@ -97,7 +97,7 @@ void write_integer(long long x) {
 int main(int argc, char *argv[]) {
 
   if (argc != 2) {
-    write_message("usage: ./reverse source_file\n");
+    write_message("usage: ./Q1 source_file\n");
     return EXIT_FAILURE;
   }
   char *source = argv[1];
